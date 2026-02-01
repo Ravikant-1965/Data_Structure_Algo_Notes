@@ -1,4 +1,5 @@
 #include <iostream>
+#include <list>
 using namespace std;
 
 
@@ -286,6 +287,79 @@ void balancedParanthesis(int open, int close, string output){
 }
 
 
+
+
+// Joseph's Problem
+class Solution {
+    public:
+      int usingList(int n, int k){
+          list<int> people;
+          for (int i = 1; i <= n; i++)
+              people.push_back(i);
+      
+          auto it = people.begin();
+      
+          while (people.size() > 1) {
+              // move k-1 steps
+              for (int count = 1; count < k; count++) {
+                  it++;
+                  if (it == people.end())
+                      it = people.begin();
+              }
+      
+              // erase kth person
+              it = people.erase(it);
+      
+              // wrap if needed
+              if (it == people.end())
+                  it = people.begin();
+          }
+      
+          return people.front();
+      }
+      
+      int usingRecursion(int n, int k){
+          
+          if (n == 1) {
+              return 0; // 0-indexed position
+          }
+          return (usingRecursion(n - 1, k) + k) % n;
+      }
+      
+      int usingSimulation(int n, int k){
+          // just do what have been told
+          vector<int> people;
+          for (int i = 1; i <= n; i++) {
+              people.push_back(i);
+          }
+          
+          int index = 0;
+          while (people.size() > 1) {
+              // Count k positions (k-1 because we include current)
+              index = (index + k - 1) % people.size();
+              people.erase(people.begin() + index);
+              // After removal, index is already at the next position
+              index = index % people.size();
+          }
+          
+          return people[0];
+      }
+      
+      int josephus(int n, int k) {
+          // code here
+          return usingSimulation(n, k);
+          
+          return usingList(n, k);
+          
+          return usingRecursion(n, k);
+          
+          
+      }
+  };
+
+
+
+  
 int main(){
 
     // Question 1:-

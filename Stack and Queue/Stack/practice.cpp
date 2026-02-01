@@ -43,6 +43,7 @@ vector<int> nextGreaterRight(vector<int> arr) {
     return ans;
 }
 
+// 54321
 
 // Question 2 :- Next greater to the left
 vector<int> nextGreaterLeft(vector<int> arr) {
