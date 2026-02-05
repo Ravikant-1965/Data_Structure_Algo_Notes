@@ -384,7 +384,7 @@ A bipartite graph is a type of graph in graph theory where the vertices can be d
     2) No edge connects two vertices within the same set
 
 
-If the queston mantions something like dividing the Graph in 2 parts or groups , then it is of Bipartite Graph
+If the queston mentions something like dividing the Graph in 2 parts or groups , then it is of Bipartite Graph
 */
 class Solution6 {    // Using DFS
     public:
